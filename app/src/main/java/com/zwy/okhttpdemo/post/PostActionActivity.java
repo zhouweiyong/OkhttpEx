@@ -57,13 +57,13 @@ public class PostActionActivity extends Activity implements View.OnClickListener
 
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.putCommonTypeParam("page","1");
-        ajaxParams.putCommonTypeParam("pageSize", "4");
+        ajaxParams.putCommonTypeParam("pageSize", "5");
 
         PostRequest<RequestResult<ArrayList<Bean>>> request = new PostRequest<RequestResult<ArrayList<Bean>>>("http://192.168.3.116:80/OkhttpDemo/api/getnews.php", ajaxParams, new OnNetSuccuss<RequestResult<ArrayList<Bean>>>() {
             @Override
             public void onSuccess(RequestResult<ArrayList<Bean>> response) {
                 Log.i("zwy", "3:" + Thread.currentThread().getId());
-                Log.i("zwy", "3:" + Thread.currentThread().getName());
+                Log.i("zwy", "4:" + Thread.currentThread().getName());
 
                 Log.i("zwy", response.msg);
                 textView1.setText(response.msg);
