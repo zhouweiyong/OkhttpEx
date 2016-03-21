@@ -119,6 +119,18 @@ public class OkHttpManage {
         return this;
     }
 
+    //当前运行的最大线程数，默认为64
+    public OkHttpManage setMaxRequests(int maxRequests){
+        mOkHttpClient.dispatcher().setMaxRequests(maxRequests);
+        return this;
+    }
+
+    //相同请求同时存在的最大数目，默认为5
+    public OkHttpManage setMaxRequestsPerHost(int maxRequestsPerHost){
+        mOkHttpClient.dispatcher().setMaxRequestsPerHost(maxRequestsPerHost);
+        return this;
+    }
+
 
 
     /**
