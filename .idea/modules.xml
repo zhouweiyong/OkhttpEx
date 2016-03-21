@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/OkhttpDemo.iml" filepath="$PROJECT_DIR$/OkhttpDemo.iml" />
+=======
+>>>>>>> threadb
       <module fileurl="file://$PROJECT_DIR$/OkhttpEx.iml" filepath="$PROJECT_DIR$/OkhttpEx.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttp/okhttp.iml" filepath="$PROJECT_DIR$/okhttp/okhttp.iml" />

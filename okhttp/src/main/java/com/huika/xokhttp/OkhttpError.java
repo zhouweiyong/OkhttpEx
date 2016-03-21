@@ -39,9 +39,9 @@ public class OkhttpError {
 
     public void initCode() {
         if (exception != null && !TextUtils.isEmpty(exception.getMessage())) {
-            if (exception.getMessage().contains("Failed to connect")) {
+            if (exception.getMessage().contains("Failed to connect")||exception.getMessage().contains("failed to connect")) {
                 errorCode = 500;
-            } else if (exception.getMessage().contains("IllegalStateException")) {
+            } else if (exception.getMessage().contains("IllegalStateException")||exception.getMessage().contains("illegalStateException")) {
                 errorCode = 300;
             } else if (exception.getMessage().contains("timeout")) {
                 errorCode = 700;
