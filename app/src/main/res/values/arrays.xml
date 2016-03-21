@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_list">
+        <item> get请求</item>
+        <item> post请求</item>
+        <item> get请求2</item>
+        <item> 上传照片</item>
+        <item> 上传照片2</item>
+        <item> 加密</item>
+    </string-array >
+</resources>

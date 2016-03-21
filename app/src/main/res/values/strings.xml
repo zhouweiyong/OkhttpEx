@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OkhttpDemo</string>
+    <string name="action_settings">Settings</string>
+
+
+
+    <!-- 选择图片 -->
+    <string name="common_camera">拍照</string>
+    <string name="common_gallery">从相册选择</string>
+</resources>
