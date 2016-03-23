@@ -48,7 +48,6 @@ public class OkHttpManage {
                     return true;
                 }
             });
-
         }
 
         mOkHttpClient = okHttpClientBuilder.build();
