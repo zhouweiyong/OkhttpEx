@@ -65,7 +65,7 @@ public class PostActionActivity extends Activity implements View.OnClickListener
                 Log.i("zwy", "3:" + Thread.currentThread().getId());
                 Log.i("zwy", "4:" + Thread.currentThread().getName());
 
-                //ttest
+                //ttest  ttt
                 Log.i("zwy", response.msg);
                 textView1.setText(response.msg);
             }
