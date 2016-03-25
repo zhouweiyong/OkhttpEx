@@ -72,7 +72,7 @@ public class OkHttpManage {
         eRequest.netWork();
     }
 
-    public void execute(ERequest eRequest,Objects tag) {
+    public void execute(ERequest eRequest,Object tag) {
         eRequest.mOkHttpClient = mOkHttpClient;
         eRequest.mDelivery = mDelivery;
         eRequest.tag = tag;

@@ -25,7 +25,7 @@ public abstract class ERequest<T> implements IRequest{
     public OkHttpClient mOkHttpClient;
     public Handler mDelivery;
     public Gson mGson = new GsonBuilder().serializeNulls().create();
-    public Objects tag;
+    public Object tag;
 
     public ERequest(String url, AjaxParams ajaxParams, OnNetSuccuss<T> onNetSuccuss, OnNetError onError, Type typeOfT) {
         this.url = url;

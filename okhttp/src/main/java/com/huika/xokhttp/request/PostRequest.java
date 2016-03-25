@@ -74,12 +74,14 @@ public class PostRequest<T> extends ERequest {
                                 ((RequestResult) result).dateStr = date;
                                 ((RequestResult) result).url = url;
                             }
-                            mDelivery.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    onNetSuccuss.onSuccess(result);
-                                }
-                            });
+                            if (request!=null) {
+                                mDelivery.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        onNetSuccuss.onSuccess(result);
+                                    }
+                                });
+                            }
                         }catch (Exception e){
                             onError.onError(new OkhttpError(e));
                         }

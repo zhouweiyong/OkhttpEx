@@ -18,7 +18,7 @@ import javax.crypto.Cipher;
 
 public class RsaHelper {
 	/**
-	 * Éú³ÉRSAÃÜÔ¿¶Ô(Ä¬ÈÏÃÜÔ¿³¤¶ÈÎª1024)
+	 * ç”ŸæˆRSAå¯†é’¥å¯¹(é»˜è®¤å¯†é’¥é•¿åº¦ä¸º1024)
 	 *
 	 * @return
 	 */
@@ -27,10 +27,10 @@ public class RsaHelper {
 	}
 
 	/**
-	 * Éú³ÉRSAÃÜÔ¿¶Ô
+	 * ç”ŸæˆRSAå¯†é’¥å¯¹
 	 *
 	 * @param keyLength
-	 *            ÃÜÔ¿³¤¶È£¬·¶Î§£º512¡«2048
+	 *            å¯†é’¥é•¿åº¦ï¼ŒèŒƒå›´ï¼š512ï½2048
 	 * @return
 	 */
 	public static KeyPair generateRSAKeyPair(int keyLength) {
@@ -45,7 +45,7 @@ public class RsaHelper {
 	}
 
 	/*
-	 * java¶Ë¹«Ô¿×ª»»³ÉC#¹«Ô¿
+	 * javaç«¯å…¬é’¥è½¬æ¢æˆC#å…¬é’¥
 	 */
 	public static String encodePublicKeyToXml(PublicKey key) {
 		if (!RSAPublicKey.class.isInstance(key)) {
@@ -62,7 +62,7 @@ public class RsaHelper {
 	}
 
 	/*
-	 * C#¶Ë¹«Ô¿×ª»»³Éjava¹«Ô¿
+	 * C#ç«¯å…¬é’¥è½¬æ¢æˆjavaå…¬é’¥
 	 */
 	public static PublicKey decodePublicKeyFromXml(String xml) {
 		xml = xml.replaceAll("\r", "").replaceAll("\n", "");
@@ -82,7 +82,7 @@ public class RsaHelper {
 	}
 
 	/*
-	 * C#¶ËË½Ô¿×ª»»³ÉjavaË½Ô¿
+	 * C#ç«¯ç§é’¥è½¬æ¢æˆjavaç§é’¥
 	 */
 	public static PrivateKey decodePrivateKeyFromXml(String xml) {
 		xml = xml.replaceAll("\r", "").replaceAll("\n", "");
@@ -108,7 +108,7 @@ public class RsaHelper {
 	}
 
 	/*
-	 * java¶ËË½Ô¿×ª»»³ÉC#Ë½Ô¿
+	 * javaç«¯ç§é’¥è½¬æ¢æˆC#ç§é’¥
 	 */
 	public static String encodePrivateKeyToXml(PrivateKey key) {
 		if (!RSAPrivateCrtKey.class.isInstance(key)) {
@@ -130,7 +130,7 @@ public class RsaHelper {
 		return sb.toString();
 	}
 
-	// ÓÃ¹«Ô¿¼ÓÃÜ
+	// ç”¨å…¬é’¥åŠ å¯†
 	public static byte[] encryptData(byte[] data, PublicKey pubKey) {
 		try {
 			Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
@@ -142,7 +142,7 @@ public class RsaHelper {
 		}
 	}
 
-	// ÓÃË½Ô¿½âÃÜ
+	// ç”¨ç§é’¥è§£å¯†
 	public static byte[] decryptData(byte[] encryptedData, PrivateKey priKey) {
 		try {
 			Cipher cipher = Cipher.getInstance("RSA");
@@ -155,12 +155,12 @@ public class RsaHelper {
 	}
 
 	/**
-	 * ¸ù¾İÖ¸¶¨¹«Ô¿½øĞĞÃ÷ÎÄ¼ÓÃÜ
+	 * æ ¹æ®æŒ‡å®šå…¬é’¥è¿›è¡Œæ˜æ–‡åŠ å¯†
 	 *
 	 * @param plainText
-	 *            Òª¼ÓÃÜµÄÃ÷ÎÄÊı¾İ
+	 *            è¦åŠ å¯†çš„æ˜æ–‡æ•°æ®
 	 * @param pubKey
-	 *            ¹«Ô¿
+	 *            å…¬é’¥
 	 * @return
 	 */
 	public static String encryptDataFromStr(String plainText, PublicKey pubKey) {
@@ -177,12 +177,12 @@ public class RsaHelper {
 	}
 
 	/**
-	 * ¸ù¾İÖ¸¶¨Ë½Ô¿¶ÔÊı¾İ½øĞĞÇ©Ãû(Ä¬ÈÏÇ©ÃûËã·¨Îª"SHA1withRSA")
+	 * æ ¹æ®æŒ‡å®šç§é’¥å¯¹æ•°æ®è¿›è¡Œç­¾å(é»˜è®¤ç­¾åç®—æ³•ä¸º"SHA1withRSA")
 	 *
 	 * @param data
-	 *            ÒªÇ©ÃûµÄÊı¾İ
+	 *            è¦ç­¾åçš„æ•°æ®
 	 * @param priKey
-	 *            Ë½Ô¿
+	 *            ç§é’¥
 	 * @return
 	 */
 	public static byte[] signData(byte[] data, PrivateKey priKey) {
@@ -190,14 +190,14 @@ public class RsaHelper {
 	}
 
 	/**
-	 * ¸ù¾İÖ¸¶¨Ë½Ô¿ºÍËã·¨¶ÔÊı¾İ½øĞĞÇ©Ãû
+	 * æ ¹æ®æŒ‡å®šç§é’¥å’Œç®—æ³•å¯¹æ•°æ®è¿›è¡Œç­¾å
 	 *
 	 * @param data
-	 *            ÒªÇ©ÃûµÄÊı¾İ
+	 *            è¦ç­¾åçš„æ•°æ®
 	 * @param priKey
-	 *            Ë½Ô¿
+	 *            ç§é’¥
 	 * @param algorithm
-	 *            Ç©ÃûËã·¨
+	 *            ç­¾åç®—æ³•
 	 * @return
 	 */
 	public static byte[] signData(byte[] data, PrivateKey priKey, String algorithm) {
@@ -213,14 +213,14 @@ public class RsaHelper {
 	}
 
 	/**
-	 * ÓÃÖ¸¶¨µÄ¹«Ô¿½øĞĞÇ©ÃûÑéÖ¤(Ä¬ÈÏÇ©ÃûËã·¨Îª"SHA1withRSA")
+	 * ç”¨æŒ‡å®šçš„å…¬é’¥è¿›è¡Œç­¾åéªŒè¯(é»˜è®¤ç­¾åç®—æ³•ä¸º"SHA1withRSA")
 	 *
 	 * @param data
-	 *            Êı¾İ
+	 *            æ•°æ®
 	 * @param sign
-	 *            Ç©Ãû½á¹û
+	 *            ç­¾åç»“æœ
 	 * @param pubKey
-	 *            ¹«Ô¿
+	 *            å…¬é’¥
 	 * @return
 	 */
 	public static boolean verifySign(byte[] data, byte[] sign, PublicKey pubKey) {
@@ -229,13 +229,13 @@ public class RsaHelper {
 
 	/**
 	 * @param data
-	 *            Êı¾İ
+	 *            æ•°æ®
 	 * @param sign
-	 *            Ç©Ãû½á¹û
+	 *            ç­¾åç»“æœ
 	 * @param pubKey
-	 *            ¹«Ô¿
+	 *            å…¬é’¥
 	 * @param algorithm
-	 *            Ç©ÃûËã·¨
+	 *            ç­¾åç®—æ³•
 	 * @return
 	 */
 	public static boolean verifySign(byte[] data, byte[] sign, PublicKey pubKey, String algorithm) {
@@ -257,20 +257,20 @@ public class RsaHelper {
 
 		String pubKeyXml = RsaHelper.encodePublicKeyToXml(pubKey);
 		String priKeyXml = RsaHelper.encodePrivateKeyToXml(priKey);
-		System.out.println("====¹«Ô¿====");
+		System.out.println("====å…¬é’¥====");
 		System.out.println(pubKeyXml);
-		System.out.println("====Ë½Ô¿====");
+		System.out.println("====ç§é’¥====");
 		System.out.println(priKeyXml);
 
 		PublicKey pubKey2 = RsaHelper.decodePublicKeyFromXml(pubKeyXml);
 		PrivateKey priKey2 = RsaHelper.decodePrivateKeyFromXml(priKeyXml);
 
-		System.out.println("====¹«Ô¿¶Ô±È====");
+		System.out.println("====å…¬é’¥å¯¹æ¯”====");
 		System.out.println(pubKey.toString());
 		System.out.println("------");
 		System.out.println(pubKey2.toString());
 
-		System.out.println("====Ë½Ô¿¶Ô±È====");
+		System.out.println("====ç§é’¥å¯¹æ¯”====");
 		System.out.println(priKey.toString());
 		System.out.println("------");
 		System.out.println(priKey2.toString());
@@ -279,29 +279,29 @@ public class RsaHelper {
 			String pubKeyXml3 = "<RSAKeyValue><Modulus>rHESyuI3ny4MLsqDBalW9ySaodCL0e6Bsrl01Q5G1qm2wjUoGULazZSNqZY+JQNjU92tW3Snk5RPIkv+wDj+uOT9LTUjQImltHnzqMvbt06GipVXDOyBLTa7G/zRIe/CrjyJ+XEYX2xIhpe5ayowl3HHUpZ71jRNioyxaVVZ8S0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
 			String priKeyXml3 = "<RSAKeyValue><Modulus>rHESyuI3ny4MLsqDBalW9ySaodCL0e6Bsrl01Q5G1qm2wjUoGULazZSNqZY+JQNjU92tW3Snk5RPIkv+wDj+uOT9LTUjQImltHnzqMvbt06GipVXDOyBLTa7G/zRIe/CrjyJ+XEYX2xIhpe5ayowl3HHUpZ71jRNioyxaVVZ8S0=</Modulus><Exponent>AQAB</Exponent><P>5a7uM+IeY8QMVQl0q88ZTqWbB555l7+366cUIClTN8z2ZXzTnWFCNoQzUrG14FouJFYumFZD12Ni5MkJK6gqSw==</P><Q>wDMhwwO4kz82uSG+FlCBr06fYk2COTg0TofmSp/5OrVqgkBIe7FgpTpVGzGLk0mvOLcy6UZftq//W0Saow6nZw==</Q><DP>FbjDgliiMyE5YVlxlUYSyKNU1BWivj09caXte1UtL5vMubBiewHVtz4tdGamIr+kmX8lDPcrl1Uo5yY0HdLbnQ==</DP><DQ>kIjjJsgxkWnEOUyKqjU4kSDK8x3ehDEkBLpmEFBlGCU9R14YJAyr5RUM0zpbABQ1VK1P9+UYLUYE/hmFQIHQmQ==</DQ><InverseQ>pxQDThwSnUZ4EaNaCPl1ovYypdQUZaZ/Sld1+0n8FEjkmRcGP1R9VMuj1ViPZg3rvm2GeP8Xv1SJqJUVueWiGA==</InverseQ><D>DxBNoPWEAF7IZ6n/KhZx52MGMw6BuFQKdm9m+lml7Iik03BLUXGapYzNlzvtr9QM8D2UMEIPhX/WLdvPpEEWVzGnD7XpLXjGwfu1ZkJRcXPEZEZ2subh5ZBqOWCFWKv5WwgGYWuYDLHfrBlBgSFWR8cZuyqkmMsWl4CiadXqGA0=</D></RSAKeyValue>";
 
-			System.out.println((new Date()).toLocaleString() + ": ¼ÓÔØ¹«Ô¿ÖĞ¡£¡£¡£");
+			System.out.println((new Date()).toLocaleString() + ": åŠ è½½å…¬é’¥ä¸­ã€‚ã€‚ã€‚");
 			PublicKey pubKey3 = RsaHelper.decodePublicKeyFromXml(pubKeyXml3);
-			System.out.println((new Date()).toLocaleString() + ": ¼ÓÔØË½Ô¿ÖĞ¡£¡£¡£");
+			System.out.println((new Date()).toLocaleString() + ": åŠ è½½ç§é’¥ä¸­ã€‚ã€‚ã€‚");
 			PrivateKey priKey3 = RsaHelper.decodePrivateKeyFromXml(priKeyXml3);
 
-			String dataStr = "JavaÓë.NETºÍÆ½¹²´¦ÍòËê£¡";
+			String dataStr = "Javaä¸.NETå’Œå¹³å…±å¤„ä¸‡å²ï¼";
 			byte[] dataByteArray = dataStr.getBytes("utf-8");
-			System.out.println("dataµÄBase64±íÊ¾£º" + Base64Helper.encode(dataByteArray));
+			System.out.println("dataçš„Base64è¡¨ç¤ºï¼š" + Base64Helper.encode(dataByteArray));
 
-			System.out.println((new Date()).toLocaleString() + ": ¼ÓÃÜÖĞ¡£¡£¡£"); // ¼ÓÃÜ
+			System.out.println((new Date()).toLocaleString() + ": åŠ å¯†ä¸­ã€‚ã€‚ã€‚"); // åŠ å¯†
 			byte[] encryptedDataByteArray = RsaHelper.encryptData(dataByteArray, pubKey3);
 
-			System.out.println("encryptedDataµÄBase64±íÊ¾£º" + Base64Helper.encode(encryptedDataByteArray));
-			System.out.println((new Date()).toLocaleString() + ": ½âÃÜÖĞ¡£¡£¡£"); // ½âÃÜ
+			System.out.println("encryptedDataçš„Base64è¡¨ç¤ºï¼š" + Base64Helper.encode(encryptedDataByteArray));
+			System.out.println((new Date()).toLocaleString() + ": è§£å¯†ä¸­ã€‚ã€‚ã€‚"); // è§£å¯†
 			// byte[]
 			byte[] decryptedDataByteArray = RsaHelper.decryptData(encryptedDataByteArray, priKey3);
-			System.out.println(new String(decryptedDataByteArray, "utf-8"));// Ç©Ãû
-			System.out.println((new Date()).toLocaleString() + ": Ç©ÃûÖĞ¡£¡£¡£");
+			System.out.println(new String(decryptedDataByteArray, "utf-8"));// ç­¾å
+			System.out.println((new Date()).toLocaleString() + ": ç­¾åä¸­ã€‚ã€‚ã€‚");
 			byte[] signDataByteArray = RsaHelper.signData(dataByteArray, priKey3);
-			System.out.println("signDataµÄBase64±íÊ¾£º" + Base64Helper.encode(signDataByteArray)); // ÑéÇ©
-			System.out.println((new Date()).toLocaleString() + ": ÑéÇ©ÖĞ¡£¡£¡£");
+			System.out.println("signDataçš„Base64è¡¨ç¤ºï¼š" + Base64Helper.encode(signDataByteArray)); // éªŒç­¾
+			System.out.println((new Date()).toLocaleString() + ": éªŒç­¾ä¸­ã€‚ã€‚ã€‚");
 			boolean isMatch = RsaHelper.verifySign(dataByteArray, signDataByteArray, pubKey3);
-			System.out.println("ÑéÇ©½á¹û£º" + isMatch);
+			System.out.println("éªŒç­¾ç»“æœï¼š" + isMatch);
 
 		}
 		catch (Exception ex) {
@@ -310,7 +310,7 @@ public class RsaHelper {
 	}
 
 	/**
-	 * ·µ»ØÁ½¸ö×Ö·û´®ÖĞ¼äµÄÄÚÈİ
+	 * è¿”å›ä¸¤ä¸ªå­—ç¬¦ä¸²ä¸­é—´çš„å†…å®¹
 	 *
 	 * @param all
 	 * @param start

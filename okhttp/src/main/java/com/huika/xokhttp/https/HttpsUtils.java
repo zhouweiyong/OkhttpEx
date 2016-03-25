@@ -21,7 +21,7 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * https证书设置
+ * https璇佷功璁剧疆
  * Created by zhy on 15/12/14.
  */
 public class HttpsUtils
