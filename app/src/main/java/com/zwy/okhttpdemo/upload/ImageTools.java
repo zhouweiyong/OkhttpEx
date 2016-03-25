@@ -26,17 +26,17 @@ import java.util.Date;
 
 
 /**
- * 
- * @description 详细描述�?
+ *
+ * @description 详细描述＿
  * @author samy
  * @date 2014-5-8 下午7:01:04
  */
 public class ImageTools {
-	public static final int UPLOAD_IMG_SIZE = 320 * 480 * 4;// 上传的图片最大尺�?
-	public static final int SHOW_IMG_SIZE = 128 * 128;// 显示的图片最大尺�?
+	public static final int UPLOAD_IMG_SIZE = 320 * 480 * 4;// 上传的图片最大尺寿
+	public static final int SHOW_IMG_SIZE = 128 * 128;// 显示的图片最大尺寿
 	public static final int CAPTURE_IMG_SIZE = 600;// 裁切大小
 
-	// 从sd卡获取图�?
+	// 从sd卡获取图牿
 	public static Bitmap getDiskBitmap(String pathString) {
 		Bitmap bitmap = null;
 		try {
@@ -106,12 +106,12 @@ public class ImageTools {
 	}
 
 	public static File saveImgForUpload(String tempFilePath) {
-		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕�?
+		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕丿
 		opts.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(tempFilePath, opts);
 
 		int srcSize = opts.outHeight * opts.outWidth;
-		if (srcSize > UPLOAD_IMG_SIZE) {// 超过�?���?
+		if (srcSize > UPLOAD_IMG_SIZE) {// 超过朿ħ倿
 			opts.inSampleSize = computeSampleSize(opts, -1, UPLOAD_IMG_SIZE);
 		}
 		else {
@@ -120,7 +120,7 @@ public class ImageTools {
 		opts.inJustDecodeBounds = false;
 		int degree = readPictureDegree(tempFilePath);
 
-		if (opts.inSampleSize == 1 && degree == 0) {// 既没有旋转也没有超过大小，直接上传原�?
+		if (opts.inSampleSize == 1 && degree == 0) {// 既没有旋转也没有超过大小，直接上传原囿
 			return new File(tempFilePath);
 		}
 
@@ -182,7 +182,7 @@ public class ImageTools {
 	 * 旋转图片用于显示小图
 	 */
 	public static Bitmap getShowImage(String tempFilePath) {
-		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕�?
+		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕丿
 		opts.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(tempFilePath, opts);
 
@@ -192,7 +192,7 @@ public class ImageTools {
 		Bitmap bitmap = null;
 		Bitmap resultBitmap = null;
 		try {
-			// 拿到之前旋转的角�?
+			// 拿到之前旋转的角庿
 			int degree = readPictureDegree(tempFilePath);
 			if (degree == 0) {// 不用旋转
 				return BitmapFactory.decodeFile(tempFilePath, opts);
@@ -253,8 +253,8 @@ public class ImageTools {
 	}
 
 	/**
-	 * 判断是否有sd�?
-	 * 
+	 * 判断是否有sd卿
+	 *
 	 * @return
 	 */
 	public static boolean isSDCardExist() {
@@ -269,7 +269,7 @@ public class ImageTools {
 	}
 
 	/**
-	 * 请求去拍�?
+	 * 请求去拍煿
 	 */
 	public static Intent getTakeCameraIntent(Uri photoUri) {
 		Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -278,7 +278,7 @@ public class ImageTools {
 	}
 
 	public static Intent pickPhotoFromGalleryIntent() {
-		// Android 4.4 以后使用 Intent.ACTION_GET_CONTENT 获取图片时返回文档对�?
+		// Android 4.4 以后使用 Intent.ACTION_GET_CONTENT 获取图片时返回文档对豿
 		// 导致SecurityException: Permission Denial: opening provider
 		// com.android.providers.media.MediaDocumentsProvider from ProcessRecord
 		// requires android.permission.MANAGE_DOCUMENTS
@@ -288,10 +288,10 @@ public class ImageTools {
 	}
 
 	/**
-	 * 图库选择图片、剪裁图片并压缩，和拍照回调可做整合 可加载预览图片；Contacts，得联系下； Bitmap型，�?��用于小图或获取缩图；
+	 * 图库选择图片、剪裁图片并压缩，和拍照回调可做整合 可加载预览图片；Contacts，得联系下； Bitmap型，丿Ȭ用于小图或获取缩图；
 	 */
 	public static Intent pickPhotoFromGalleryIntent2() {
-		// Android 4.4 以后使用 Intent.ACTION_GET_CONTENT 获取图片时返回文档对�?
+		// Android 4.4 以后使用 Intent.ACTION_GET_CONTENT 获取图片时返回文档对豿
 		// 导致SecurityException: Permission Denial: opening provider
 		// com.android.providers.media.MediaDocumentsProvider from ProcessRecord
 		// requires android.permission.MANAGE_DOCUMENTS
@@ -313,13 +313,13 @@ public class ImageTools {
 	}
 
 	/**
-	 * 图库选择图片、剪裁图片并压缩，和拍照回调可做整合 �?��用于获取大图；Uri方式 无法加载预览图片�?
+	 * 图库选择图片、剪裁图片并压缩，和拍照回调可做整合 丿Ȭ用于获取大图；Uri方式 无法加载预览图片＿
 	 */
 	public static Intent cropPhotoOfCompressFromGalleryIntent(Uri photoUri) {
 		// Intent intent = new Intent("com.android.camera.action.CROP");
 		// intent.setDataAndType(photoUri, "image/*");
 		Intent intent = new Intent("android.intent.action.PICK");
-        intent.setDataAndType(Media.INTERNAL_CONTENT_URI, "image/*");
+		intent.setDataAndType(Media.INTERNAL_CONTENT_URI, "image/*");
 //		intent.setType("image/*");
 		intent.putExtra("crop", "true");
 		intent.putExtra("aspectX", 1);
@@ -336,7 +336,7 @@ public class ImageTools {
 	}
 
 	/**
-	 * 拍照回调，根据Uri来裁切压缩处理图�?
+	 * 拍照回调，根据Uri来裁切压缩处理图牿
 	 */
 	public static Intent cropPhotoOfCompressIntent(Uri photoUri) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
@@ -355,7 +355,7 @@ public class ImageTools {
 	}
 
 	/**
-	 * 图库选择图片、剪裁图片但无压�?
+	 * 图库选择图片、剪裁图片但无压缿
 	 */
 	public static Intent cropPhotoOfNoCompressIntent(Uri photoUri) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
@@ -371,22 +371,22 @@ public class ImageTools {
 	}
 
 	/**
-	 * 图库选择图片，直接�?择图片，不用去剪裁处�?
+	 * 图库选择图片，直接ꀦ˩图片，不用去剪裁处琿
 	 */
 	public static Intent takePickIntent() {
-		// 使用这种intent则调用任何注册过的图片浏览器，例如es文件浏览�?来�?取图�?
+		// 使用这种intent则调用任何注册过的图片浏览器，例如es文件浏览噿来ꀥϖ图牿
 //		Intent intent = new Intent();
 //		intent.setType("image/*");
 //		intent.setAction(Intent.ACTION_GET_CONTENT);
-		// 使用这种方式只调用系统的图库程序来�?取图�?
-		 Intent intent = new Intent(Intent.ACTION_PICK, Media.EXTERNAL_CONTENT_URI);
+		// 使用这种方式只调用系统的图库程序来ꀥϖ图牿
+		Intent intent = new Intent(Intent.ACTION_PICK, Media.EXTERNAL_CONTENT_URI);
 		return intent;
 	}
 
 	/**
-	 * 
-	 * 方法概述：获取从图库中�?择图片的路径
-	 * 
+	 *
+	 * 方法概述：获取从图库中ꀦ˩图片的路径
+	 *
 	 * @author samy
 	 * @date 2014-5-22 下午3:04:10
 	 */
@@ -397,7 +397,7 @@ public class ImageTools {
 		picturePath = cursor.getString(cursor.getColumnIndex(Media.DATA));
 		cursor.close();
 
-		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕�?
+		BitmapFactory.Options opts = new BitmapFactory.Options();// 获取缩略图显示到屏幕丿
 		opts.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(picturePath, opts);
 		int w = opts.outWidth;
@@ -439,7 +439,7 @@ public class ImageTools {
 	}
 
 	/**
-	 * 用当前时间给取得的图片命�?
+	 * 用当前时间给取得的图片命吿
 	 */
 	public  static String getPhotoFileName() {
 		Date date = new Date(System.currentTimeMillis());

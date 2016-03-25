@@ -74,7 +74,7 @@ public class PostRequest<T> extends ERequest {
                                 ((RequestResult) result).dateStr = date;
                                 ((RequestResult) result).url = url;
                             }
-                            if (request!=null) {
+                            if (result!=null) {
                                 mDelivery.post(new Runnable() {
                                     @Override
                                     public void run() {

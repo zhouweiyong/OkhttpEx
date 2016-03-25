@@ -16,27 +16,27 @@ public class MMAlert {
 	public interface DialogOnItemClickListener {
 		void onItemClickListener(View v, int position);
 	}
-	// begin---底部弹出宽，类似苹果�?/////////////////////////////////////////
-		public static Dialog createShowAlert(final Context context, int layoutId) {
-			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			View layout = inflater.inflate(layoutId, null);
-			final int cFullFillWidth = 10000;
-			layout.setMinimumWidth(cFullFillWidth);
+	// begin---底部弹出宽，类似苹果/////////////////////////////////////////
+	public static Dialog createShowAlert(final Context context, int layoutId) {
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View layout = inflater.inflate(layoutId, null);
+		final int cFullFillWidth = 10000;
+		layout.setMinimumWidth(cFullFillWidth);
 
-			// set a large value put it in bottom
-			final Dialog dlg = new Dialog(context, R.style.MMTheme_DataSheet);
-			Window w = dlg.getWindow();
-			WindowManager.LayoutParams lp = w.getAttributes();
-			lp.x = 0;
-			final int cMakeBottom = -1000;
-			lp.y = cMakeBottom;
-			lp.gravity = Gravity.BOTTOM;// 改变显示位置
-			dlg.onWindowAttributesChanged(lp);
-			dlg.setCanceledOnTouchOutside(true);
-			dlg.setContentView(layout);
-			return dlg;
-		}
-	
+		// set a large value put it in bottom
+		final Dialog dlg = new Dialog(context, R.style.MMTheme_DataSheet);
+		Window w = dlg.getWindow();
+		WindowManager.LayoutParams lp = w.getAttributes();
+		lp.x = 0;
+		final int cMakeBottom = -1000;
+		lp.y = cMakeBottom;
+		lp.gravity = Gravity.BOTTOM;// 改变显示位置
+		dlg.onWindowAttributesChanged(lp);
+		dlg.setCanceledOnTouchOutside(true);
+		dlg.setContentView(layout);
+		return dlg;
+	}
+
 	public static Dialog createTwoChoicAlertNoTitle(final Context context, int fCStrId, int sCStrId, final DialogOnItemClickListener onItemClickListener) {
 		final Dialog dlg = createShowAlert(context, R.layout.alert_notitle_twice);
 		dlg.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {

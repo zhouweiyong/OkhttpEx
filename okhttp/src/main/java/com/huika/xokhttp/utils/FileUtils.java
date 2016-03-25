@@ -7,7 +7,7 @@ import java.net.URLConnection;
 
 
 /**
- * 获取发送文件的类型
+ * 鑾峰彇鍙戦�佹枃浠剁殑绫诲瀷
  * @version 1.1
  */
 public final class FileUtils {
