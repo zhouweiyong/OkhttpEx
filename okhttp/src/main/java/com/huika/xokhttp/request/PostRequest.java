@@ -57,38 +57,47 @@ public class PostRequest<T> extends ERequest {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    onError.onError(new OkhttpError(e));
+                    error(e);
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                        String date = null;
-                        String url = null;
-                        if (response.headers() != null) date = response.header("Date", null);
-                        if (response.request() != null) url = response.request().url().toString();
-                        String json = response.body().string();
-                        L.i(String.format("返回的信息:%s", json));
-                        try {
-                            final T result = mGson.fromJson(json, typeOfT);
-                            if (result instanceof RequestResult) {
-                                ((RequestResult) result).dateStr = date;
-                                ((RequestResult) result).url = url;
-                            }
-                            if (result!=null) {
-                                mDelivery.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        onNetSuccuss.onSuccess(result);
-                                    }
-                                });
-                            }
-                        }catch (Exception e){
-                            onError.onError(new OkhttpError(e));
+                    String date = null;
+                    String url = null;
+                    if (response.headers() != null) date = response.header("Date", null);
+                    if (response.request() != null) url = response.request().url().toString();
+                    String json = response.body().string();
+                    L.i(String.format("返回的信息:%s", json));
+                    try {
+                        final T result = mGson.fromJson(json, typeOfT);
+                        if (result instanceof RequestResult) {
+                            ((RequestResult) result).dateStr = date;
+                            ((RequestResult) result).url = url;
                         }
+                        if (result != null) {
+                            mDelivery.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    onNetSuccuss.onSuccess(result);
+                                }
+                            });
+                        }
+                    } catch (Exception e) {
+                        error(e);
+                    }
                 }
             });
         } catch (Exception e) {
-            onError.onError(new OkhttpError(e));
+            error(e);
         }
+    }
+
+    private void error(final Exception e){
+        mDelivery.post(new Runnable() {
+            @Override
+            public void run() {
+                onError.onError(new OkhttpError(e));
+            }
+        });
     }
 }
